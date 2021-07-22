@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "BaiTap_22_7_2021"
