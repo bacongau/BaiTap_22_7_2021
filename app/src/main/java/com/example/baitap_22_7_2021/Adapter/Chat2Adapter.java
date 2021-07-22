@@ -58,6 +58,7 @@ public class Chat2Adapter extends RecyclerView.Adapter<Chat2Adapter.ViewHolder> 
         }
 
         public void setData(String b){
+            tvgui.setText(b);
             if (b.equals("")){
                 tvBack.setVisibility(View.VISIBLE);
                 img.setVisibility(View.VISIBLE);

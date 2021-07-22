@@ -61,13 +61,14 @@ public class MainActivity extends AppCompatActivity {
         img = findViewById(R.id.imageView_send_mes);
 
         arrayListRight = new ArrayList<>();
+
         adapter = new Chat2Adapter(arrayListRight);
 
         rv.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-        linearLayoutManager.getReverseLayout();
-
+//        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(adapter);
     }
