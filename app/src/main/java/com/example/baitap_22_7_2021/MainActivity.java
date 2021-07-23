@@ -11,8 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.baitap_22_7_2021.Adapter.Chat2Adapter;
-import com.example.baitap_22_7_2021.Model.Chat;
+import com.example.baitap_22_7_2021.Adapter.ChatAdapter;
+import com.example.baitap_22_7_2021.Model.Chat2;
 
 import java.util.ArrayList;
 
@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
     EditText edt;
     ImageView img;
 
-    ArrayList<Chat> arrayListRight;
+    ArrayList<Chat2> arrayList;
 
-    Chat2Adapter adapter;
+    ChatAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity {
         if (mes.isEmpty()) {
             Toast.makeText(this, "Ban chua nhap noi dung", Toast.LENGTH_SHORT).show();
         } else {
-            arrayListRight.add(new Chat(mes));
-            arrayListRight.add(new Chat(""));
+            arrayList.add(new Chat2(mes,2));
+            arrayList.add(new Chat2("Hello, how are you?",1));
             adapter.notifyDataSetChanged();
             edt.setText("");
-            Toast.makeText(this, "" + arrayListRight.size(), Toast.LENGTH_SHORT).show();
 
+            rv.scrollToPosition(arrayList.size()-1);
         }
     }
 
@@ -60,15 +60,15 @@ public class MainActivity extends AppCompatActivity {
         edt = findViewById(R.id.edt_mes);
         img = findViewById(R.id.imageView_send_mes);
 
-        arrayListRight = new ArrayList<>();
+        arrayList = new ArrayList<>();
 
-        adapter = new Chat2Adapter(arrayListRight);
+        adapter = new ChatAdapter(arrayList);
 
         rv.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
-//        linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
+
         rv.setLayoutManager(linearLayoutManager);
         rv.setAdapter(adapter);
     }

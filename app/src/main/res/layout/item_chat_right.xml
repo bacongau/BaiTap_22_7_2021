@@ -16,5 +16,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_right_chat_box"
         android:padding="5dp"
+        android:textColor="@color/white"
         android:text="TextView" />
 </LinearLayout>
