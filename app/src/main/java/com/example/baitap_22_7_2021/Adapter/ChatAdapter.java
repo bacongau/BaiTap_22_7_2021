@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.baitap_22_7_2021.Model.Chat2;
 import com.example.baitap_22_7_2021.R;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -72,14 +73,17 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class ViewHolerLeft extends RecyclerView.ViewHolder {
         TextView tv;
+        ShapeableImageView imageView;
 
         public ViewHolerLeft(@NonNull View itemView) {
             super(itemView);
             tv = itemView.findViewById(R.id.textView_left);
+            imageView = itemView.findViewById(R.id.img_ava_chat_left);
         }
 
         public void setDataLeft(Chat2 chat2) {
             tv.setText(chat2.getMes());
+            Picasso.get().load(chat2.getUrlAvaTrongMes()).placeholder(R.drawable.bean).into(imageView);
         }
     }
 

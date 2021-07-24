@@ -70,9 +70,9 @@ public class MainActivity extends AppCompatActivity {
         b.setItems(items, new DialogInterface.OnClickListener() {
             //Xử lý sự kiện
             public void onClick(DialogInterface dialog, int which) {
-                if(which == 0){
+                if (which == 0) {
                     chupAnh();
-                }else{
+                } else {
                     chonAnh();
                 }
             }
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     lastMes = "Hãy gửi tin nhắn cho bạn bè";
                 } else {
                     lastMes = arrayList.get(arrayList.size() - 2).getMes();
-                    if (lastMes == ""){
+                    if (lastMes == "") {
                         lastMes = "Bạn vừa gửi 1 ảnh";
                     }
                     id = nguoiDung.getId();
@@ -148,8 +148,11 @@ public class MainActivity extends AppCompatActivity {
         if (mes.isEmpty()) {
             Toast.makeText(this, "Ban chua nhap noi dung", Toast.LENGTH_SHORT).show();
         } else {
-            arrayList.add(new Chat2(mes, 2, null));
-            arrayList.add(new Chat2("Hello, how are you?", 1, null));
+            // xử lý avatar của left
+            String avaurlGuiSang = nguoiDung.getAvaUrl();
+
+            arrayList.add(new Chat2(mes, 2, null,null));
+            arrayList.add(new Chat2("Hello, how are you?", 1, null,avaurlGuiSang));
             adapter.notifyDataSetChanged();
             edt.setText("");
 
@@ -197,8 +200,8 @@ public class MainActivity extends AppCompatActivity {
                     byte[] byteArray = stream.toByteArray();
                     bitmap.recycle();
 
-                    arrayList.add(new Chat2("Bạn vừa gửi 1 ảnh", 3, byteArray));
-                    arrayList.add(new Chat2("Bạn vừa chọn ảnh trong thư viện ảnh", 1, null));
+                    arrayList.add(new Chat2("Bạn vừa gửi 1 ảnh", 3, byteArray,null));
+                    arrayList.add(new Chat2("Bạn vừa chọn ảnh trong thư viện ảnh", 1, null,nguoiDung.getAvaUrl()));
 
                     adapter.notifyDataSetChanged();
                 } catch (FileNotFoundException e) {
@@ -212,8 +215,8 @@ public class MainActivity extends AppCompatActivity {
                 byte[] byteArray = stream.toByteArray();
                 bitmap.recycle();
 
-                arrayList.add(new Chat2("Bạn vừa gửi 1 ảnh", 3, byteArray));
-                arrayList.add(new Chat2("Bạn vừa gửi ảnh chụp", 1, null));
+                arrayList.add(new Chat2("Bạn vừa gửi 1 ảnh", 3, byteArray,null));
+                arrayList.add(new Chat2("Bạn vừa gửi ảnh chụp", 1, null,nguoiDung.getAvaUrl()));
 
                 adapter.notifyDataSetChanged();
             }

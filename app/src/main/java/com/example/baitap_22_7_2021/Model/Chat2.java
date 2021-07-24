@@ -4,6 +4,7 @@ public class Chat2 {
     String mes;
     int check;
     byte[] img;
+    String urlAvaTrongMes;
 
     public String getMes() {
         return mes;
@@ -29,10 +30,19 @@ public class Chat2 {
         this.img = img;
     }
 
-    public Chat2(String mes, int check, byte[] img) {
+    public String getUrlAvaTrongMes() {
+        return urlAvaTrongMes;
+    }
+
+    public void setUrlAvaTrongMes(String urlAvaTrongMes) {
+        this.urlAvaTrongMes = urlAvaTrongMes;
+    }
+
+    public Chat2(String mes, int check, byte[] img, String urlAvaTrongMes) {
         this.mes = mes;
         this.check = check;
         this.img = img;
+        this.urlAvaTrongMes = urlAvaTrongMes;
     }
 
     public Chat2() {
