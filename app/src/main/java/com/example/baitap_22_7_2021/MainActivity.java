@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -60,9 +62,28 @@ public class MainActivity extends AppCompatActivity {
         anhxa();
         setDuLieu();
         back();
-        chupAnh();
-        chonAnh();
-
+        String[] items = {"Chụp ảnh", "Chọn ảnh"};
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+//Thiết lập title
+        b.setTitle("Chọn phương thức");
+//Thiết lập item
+        b.setItems(items, new DialogInterface.OnClickListener() {
+            //Xử lý sự kiện
+            public void onClick(DialogInterface dialog, int which) {
+                if(which == 0){
+                    chupAnh();
+                }else{
+                    chonAnh();
+                }
+            }
+        });
+//Hiển thị dialog
+        img_chupanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.show();
+            }
+        });
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,25 +93,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     private void chonAnh() {
-        img_chonanh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, ChonHinh);
-            }
-        });
+        Intent intent = new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        startActivityForResult(intent, ChonHinh);
     }
 
     private void chupAnh() {
-        img_chupanh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(intent, ChupHinh);
-            }
-        });
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, ChupHinh);
     }
 
     private void back() {

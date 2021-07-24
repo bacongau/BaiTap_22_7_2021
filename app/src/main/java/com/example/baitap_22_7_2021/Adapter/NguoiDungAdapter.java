@@ -91,10 +91,8 @@ public class NguoiDungAdapter extends RecyclerView.Adapter<NguoiDungAdapter.View
                     .placeholder(R.drawable.bean)
                     .into(imgAva);
             tv_ten.setText(ten);
-
             tv_lastMes.setText(tncuoi);
             tv_time.setText("  now");
-
         }
     }
 
